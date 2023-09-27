@@ -1,0 +1,21 @@
+{
+  "name": "campaigns",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "nx": {
+    "targets": {
+      "build": {
+        "outputs": ["{projectRoot}/.output", "{projectRoot}/.nuxt"]
+      }
+    },
+    "tags": ["scope:campaigns"],
+    "implicitDependencies": ["tag:scope:campaigns"]
+  }
+}
