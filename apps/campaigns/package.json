@@ -1,21 +1,28 @@
 {
-  "name": "campaigns",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
-  "nx": {
-    "targets": {
-      "build": {
-        "outputs": ["{projectRoot}/.output", "{projectRoot}/.nuxt"]
-      }
+    "name": "campaigns",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "npx nuxt build",
+        "dev": "npx nuxt dev",
+        "generate": "npx npx nuxt generate",
+        "preview": "npx nuxt preview",
+        "postinstall": "npx nuxt prepare"
     },
-    "tags": ["scope:campaigns"],
-    "implicitDependencies": ["tag:scope:campaigns"]
-  }
+    "nx": {
+        "targets": {
+            "build": {
+                "outputs": [
+                    "{projectRoot}/.output",
+                    "{projectRoot}/.nuxt"
+                ]
+            }
+        },
+        "tags": [
+            "scope:campaigns"
+        ],
+        "implicitDependencies": [
+            "tag:scope:campaigns"
+        ]
+    }
 }
