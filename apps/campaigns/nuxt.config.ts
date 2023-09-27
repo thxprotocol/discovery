@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from 'nuxt/config';
+import { NuxtConfig, defineNuxtConfig } from 'nuxt/config';
 import { join } from 'path';
 import { workspaceRoot } from '@nx/devkit';
 import fs from 'fs';
@@ -23,7 +23,7 @@ function getMonorepoTsConfigPaths(tsConfigPath: string) {
 }
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
+const config: NuxtConfig = {
     /**
      * Nuxt recommends setting custom alias from a tsconfig here,
      * instead of in tsconfig since it will override the auto generated tsconfig.
@@ -36,10 +36,15 @@ export default defineNuxtConfig({
     alias: getMonorepoTsConfigPaths('../../tsconfig.base.json'),
     devtools: { enabled: true },
     devServer: {
-        port: 4001,
-        https: {
-            key: fs.readFileSync(path.resolve(process.env.SSL_KEY_PATH as string)).toString(),
-            cert: fs.readFileSync(path.resolve(process.env.SSL_CERT_PATH as string)).toString(),
-        },
+        port: Number(process.env.PORT) || 3000,
     },
-});
+};
+
+if (config.devServer && process.env.SSL) {
+    config.devServer['https'] = {
+        key: fs.readFileSync(path.resolve(process.env.SSL_KEY_PATH as string)).toString(),
+        cert: fs.readFileSync(path.resolve(process.env.SSL_CERT_PATH as string)).toString(),
+    };
+}
+
+export default defineNuxtConfig(config);
