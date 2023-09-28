@@ -2,8 +2,11 @@
     "name": "discovery",
     "version": "0.0.0",
     "license": "MIT",
-    "scripts": {},
     "private": true,
+    "scripts": {
+        "serve:api": "nx serve api",
+        "serve:campaigns": "yarn --cwd apps/campaigns run dev"
+    },
     "dependencies": {
         "@nestjs/common": "^10.0.2",
         "@nestjs/core": "^10.0.2",
